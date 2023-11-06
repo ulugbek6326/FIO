@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F-I-SH</title>
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="icon" href="./img/logo.png">
+</head>
+<body>
+    <section class="container">
+        <img src="../static/img/logo.png" alt="">
+        <div class="content">
+            <form action="/" method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Familiya, Ism, Shrfizni kiriting!" name='fio'><br>
+                <button type="submit">Yuborish</button>
+            </form>
+        </div>
+        <div class="window">
+            <h2>
+                {% if results %}
+                    {% comment %} {% for i in results %} {% endcomment %}
+                        Familiyasi: {{ results.last_name }}<br>
+                        Ismi: {{ results.first_name }}<br>
+                        Otasining ismi: {{ results.middle_name }}<br>
+                    {% comment %} {% endfor %} {% endcomment %}
+                {% endif %}
+            </h2>
+        </div>
+    </section>
+</body>
+</html>
