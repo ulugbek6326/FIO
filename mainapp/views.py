@@ -18,8 +18,9 @@ def fio(request):
                     a = ''
             else:
                 a += i
-        result = Fio(first_name=li[1], last_name=li[0], middle_name=li[2])
-        result.save()
+        if len(li) > 2:
+            result = Fio(first_name=li[1], last_name=li[0], middle_name=li[2])
+            result.save()
     results = Fio.objects.all().order_by('-id').first()
     return render(request,'index.html', {'results':results})
 
